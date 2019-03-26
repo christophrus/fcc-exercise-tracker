@@ -26,9 +26,19 @@
             <input id="dat" type="text" name="date" placeholder="date (yyyy-mm-dd)">
             <input type="submit" value="Submit">
           </form>
-          <p><strong>GET users's exercise log: </strong><code>GET /api/exercise/log?{userId}[&amp;from][&amp;to][&amp;limit]</code></p>
+          <p><strong>GET users's exercise log: </strong><code>GET /api/exercise/log?{userId}[&amp;from][&amp;to][&amp;limit][&amp;order]</code></p>
           <p><strong>{ }</strong> = required, <strong>[ ]</strong> = optional</p>
-          <p><strong>from, to</strong> = dates (yyyy-mm-dd); <strong>limit</strong> = number</p>
+          <p><strong>from, to</strong> = dates (yyyy-mm-dd); <strong>limit</strong> = number; <strong>order</strong> = asc/desc</p>
+          <p><strong>Examples:</strong></p>
+          <ul>
+             <li><a href="/api/exercise/log?userId=m2UWsL">/api/exercise/log?userId=m2UWsL</a></li>
+             <li><a href="/api/exercise/log?userId=m2UWsL&order=asc">/api/exercise/log?userId=m2UWsL&order=asc</a></li>
+             <li><a href="/api/exercise/log?userId=m2UWsL&limit=3">/api/exercise/log?userId=m2UWsL&limit=3</a></li>
+             <li><a href="/api/exercise/log?userId=m2UWsL&from=2019-03-24">/api/exercise/log?userId=m2UWsL&from=2019-03-24</a></li>
+             <li><a href="/api/exercise/log?userId=m2UWsL&to=2019-03-24&limit=2">/api/exercise/log?userId=m2UWsL&to=2019-03-24&limit=2</a></li>
+             <li><a href="/api/exercise/log?userId=m2UWsL&from=2019-03-23&to=2019-03-25">/api/exercise/log?userId=m2UWsL&from=2019-03-23&to=2019-03-25</a></li>
+             <li><a href="/api/exercise/log?userId=m2UWsL&from=2019-03-22&to=2019-03-25&limit=2">/api/exercise/log?userId=m2UWsL&from=2019-03-22&to=2019-03-25&limit=2</a></li>
+          </ul>
       </div>
    </body>
 
