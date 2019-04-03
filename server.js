@@ -24,9 +24,10 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html')
 });
 
-app.use('/api/exercise/new-user', userHandler.addUser);
-app.use("/api/exercise/add", exersiceHandler.addExercise);
-app.use("/api/exercise/log", logHandler.getLog);
+app.post('/api/exercise/new-user', userHandler.addUser);
+app.get('/api/exercise/users', userHandler.getUsers);
+app.post("/api/exercise/add", exersiceHandler.addExercise);
+app.get("/api/exercise/log", logHandler.getLog);
 
 
 // Not found middleware

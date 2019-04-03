@@ -34,14 +34,17 @@ exports.getLog = function (req, res, next) {
 
                     if (foundExercises) {
                         
+                        let log = foundExercises.map(el => ({
+                            description: el.description,
+                            duration: el.duration,
+                            date: moment(el.date).format('YYYY-MM-DD')
+                        }));
+
                         ret = {
-                            id: foundUser.id,
-                            name: foundUser.name,
-                            exercises: foundExercises.map(el => ({
-                                description: el.description,
-                                duration: el.duration,
-                                date: moment(el.date).format('YYYY-MM-DD')
-                            }))
+                            _id: foundUser.id,
+                            username: foundUser.name,
+                            count: log.length,
+                            log: log
                         }
                         res.json(ret);
                     } else {

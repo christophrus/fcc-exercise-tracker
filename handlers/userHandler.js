@@ -21,6 +21,31 @@ exports.addUser = function (req, res, next) {
             return next(err);
         }
 
-        res.json(savedUser.toObject());
+        res.json({
+            username: savedUser.name,
+             _id: savedUser.id
+        });
     });
+}
+
+exports.getUsers = function (req, res, next) {
+
+    let ret = {};
+
+    User.find({}, function(err, users) {
+
+        if (users) {
+
+            ret = users.map(el => ({
+                username: el.name,
+                _id: el.id
+            }));
+
+            res.json(ret);
+        } else {
+            next(err, {message: 'no users found'});
+        }
+
+    });
+
 }

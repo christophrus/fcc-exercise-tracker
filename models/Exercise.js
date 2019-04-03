@@ -10,7 +10,7 @@ var exerciseSchema = new Schema({
 });
 
 exerciseSchema.post('save', function (doc, next) {
-    doc.populate({ path: "user", select: "name" }).execPopulate().then(function () {
+    doc.populate({ path: "user", select: "name id" }).execPopulate().then(function () {
         next();
     });
 });

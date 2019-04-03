@@ -4,7 +4,7 @@ const User = require('../models/User');
 exports.addExercise = function (req, res, next) {
 
     let { userId, description, duration, date } = req.body;
-    date = new Date(date);
+    date = (date === "" || typeof date === 'undefined' ) ? new Date() : new Date(date);
     
     if (date == 'Invalid Date') return next({message: 'Invalid Date'});
 
@@ -23,7 +23,16 @@ exports.addExercise = function (req, res, next) {
                     console.log(err);
                     return next(err);
                 }
-                res.json(savedExercise.toObject());
+
+                let ret = {
+                    _id: savedExercise.user.id,
+                    username: savedExercise.user.name,
+                    description: savedExercise.description,
+                    duration: savedExercise.duration,
+                    date: savedExercise.date
+                };
+
+                res.json(ret);
             });
         } else {
             return next({message: "userId not found"});
